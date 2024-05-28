@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class splashscreen extends StatelessWidget {
   const splashscreen({super.key});
@@ -10,14 +9,9 @@ class splashscreen extends StatelessWidget {
         backgroundColor: Colors.white,
         body: Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Align(
-                  alignment: Alignment.center,
-                  child: SvgPicture.asset(
-                    "assets/Login.svg",
-                    width: 100,
-                    height: 300,
-                  ))
+              Image.asset("assets/icon.png"),
             ],
           ),
         ));
