@@ -14,7 +14,7 @@ class splashscreen extends StatelessWidget {
               Align(
                   alignment: Alignment.center,
                   child: SvgPicture.asset(
-                    "assets/Icon.svg",
+                    "assets/Login.svg",
                     width: 100,
                     height: 300,
                   ))
