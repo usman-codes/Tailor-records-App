@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:darzi_app/screens/Homescreen.dart';
+import 'package:darzi_app/screens/loginscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
@@ -16,7 +17,7 @@ class _splashscreenState extends State<splashscreen> {
     super.initState();
     Timer(Duration(seconds: 3), () {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => HomeScreen()));
+          context, MaterialPageRoute(builder: (context) => loginscreen()));
     });
   }
 
