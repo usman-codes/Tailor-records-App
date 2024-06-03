@@ -67,6 +67,22 @@ class _loginscreenState extends State<loginscreen> {
                             "Password",
                             style: TextStyle(color: Colors.deepPurple),
                           )),
+                    ),
+                    SizedBox(
+                      height: 50,
+                    ),
+                    Container(
+                      height: 40,
+                      width: 170,
+                      decoration: BoxDecoration(
+                          gradient:
+                          LinearGradient(colors: [Colors.deepPurple, Colors.purple]),
+                        borderRadius: BorderRadius.circular(30)
+                      ),
+                      child: Center(child: Text(
+                          "Sign in",
+                        style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white),
+                      )),
                     )
                   ],
                 ),
