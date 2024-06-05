@@ -1,4 +1,8 @@
+import 'package:darzi_app/screens/Homescreen.dart';
+import 'package:darzi_app/screens/Signupscreen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class loginscreen extends StatefulWidget {
   const loginscreen({super.key});
@@ -8,6 +12,10 @@ class loginscreen extends StatefulWidget {
 }
 
 class _loginscreenState extends State<loginscreen> {
+  TextEditingController loginEmail = TextEditingController();
+  TextEditingController loginpassword = TextEditingController();
+
+  bool ishidden = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +40,7 @@ class _loginscreenState extends State<loginscreen> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: 250),
+            padding: EdgeInsets.only(top: 350),
             child: Container(
               decoration: const BoxDecoration(
                   color: Colors.white,
@@ -51,7 +59,7 @@ class _loginscreenState extends State<loginscreen> {
                         height: 30,
                       ),
                       TextField(
-                        controller: TextEditingController(),
+                        controller: loginEmail,
                         decoration: InputDecoration(
                             suffixIcon: const Icon(Icons.email_outlined),
                             label: const Text(
@@ -63,10 +71,19 @@ class _loginscreenState extends State<loginscreen> {
                         height: 20,
                       ),
                       TextField(
-                        controller: TextEditingController(),
-                        obscureText: true,
-                        decoration: const InputDecoration(
-                            suffixIcon: Icon(Icons.visibility_off_rounded),
+                        controller: loginpassword,
+                        obscureText: ishidden,
+                        obscuringCharacter: "*",
+                        decoration: InputDecoration(
+                            suffixIcon: GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    ishidden = !ishidden;
+                                  });
+                                },
+                                child: Icon(ishidden
+                                    ? Icons.visibility
+                                    : Icons.visibility_off)),
                             label: Text(
                               "Password",
                               style: TextStyle(color: Colors.deepPurple),
@@ -91,7 +108,13 @@ class _loginscreenState extends State<loginscreen> {
                         height: 50,
                       ),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => HomeScreen(),
+                              ));
+                        },
                         child: Container(
                           height: 60,
                           width: 250,
@@ -124,7 +147,12 @@ class _loginscreenState extends State<loginscreen> {
                                   TextStyle(color: Colors.grey, fontSize: 15),
                             ),
                             GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => signupscrenn()));
+                              },
                               child: Text(
                                 "SIGN UP",
                                 style: TextStyle(
