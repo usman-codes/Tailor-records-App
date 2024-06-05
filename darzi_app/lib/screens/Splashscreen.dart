@@ -25,41 +25,50 @@ class _splashscreenState extends State<splashscreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.deepPurple,
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Animate(
-                effects: [
-                  FadeEffect(delay: 300.ms),
-                ],
-                child: Image.asset(
-                  "assets/Icon2.png",
-                  width: 180,
-                  height: 250,
-                ),
+        body: Container(
+      height: double.infinity,
+      width: double.infinity,
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+            colors: [Colors.deepPurple, Colors.purple],
+            begin: Alignment.bottomRight,
+            end: Alignment.centerLeft),
+      ),
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Animate(
+              effects: [
+                FadeEffect(delay: 300.ms),
+              ],
+              child: Image.asset(
+                "assets/Icon2.png",
+                width: 180,
+                height: 250,
               ),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "DARZI",
-                    style: TextStyle(
-                      fontSize: 30,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
+            ),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "DARZI",
+                  style: TextStyle(
+                    fontSize: 30,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
                   ),
-                  SizedBox(width: 10),
-                  Text(
-                    "DIGITAL",
-                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-                  )
-                ],
-              ).animate(delay: 400.ms).slideY(curve: Curves.easeIn)
-            ],
-          ),
-        ));
+                ),
+                SizedBox(width: 10),
+                Text(
+                  "DIGITAL",
+                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                )
+              ],
+            ).animate(delay: 400.ms).slideY(curve: Curves.easeIn)
+          ],
+        ),
+      ),
+    ));
   }
 }

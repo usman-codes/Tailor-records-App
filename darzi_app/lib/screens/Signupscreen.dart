@@ -50,106 +50,115 @@ class _signupscrennState extends State<signupscrenn> {
               child: Padding(
                 padding: const EdgeInsets.only(left: 20, right: 20),
                 child: SingleChildScrollView(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        height: 30,
-                      ),
-                      TextField(
-                        controller: signupname,
-                        decoration: InputDecoration(
-                            suffixIcon: const Icon(Icons.person_2_outlined),
-                            label: const Text(
-                              "Name",
-                              style: TextStyle(color: Colors.deepPurple),
-                            )),
-                      ),
-                      TextField(
-                        controller: signupemail,
-                        decoration: InputDecoration(
-                            suffixIcon: const Icon(Icons.email_outlined),
-                            label: const Text(
-                              "Email",
-                              style: TextStyle(color: Colors.deepPurple),
-                            )),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      TextField(
-                        controller: signuppassword,
-                        obscureText: ishidden,
-                        decoration: InputDecoration(
-                            suffixIcon: GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    ishidden = !ishidden;
-                                  });
-                                },
-                                child: Icon(ishidden
-                                    ? Icons.visibility
-                                    : Icons.visibility_off)),
-                            label: Text(
-                              "Password",
-                              style: TextStyle(color: Colors.deepPurple),
-                            )),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      const SizedBox(
-                        height: 50,
-                      ),
-                      GestureDetector(
-                        onTap: () {},
-                        child: Container(
-                          height: 60,
-                          width: 250,
-                          decoration: BoxDecoration(
-                              gradient: const LinearGradient(
-                                  colors: [Colors.deepPurple, Colors.purple]),
-                              borderRadius: BorderRadius.circular(30)),
-                          child: const Center(
-                              child: Text(
-                            "Sign Up",
-                            style: TextStyle(
-                                fontSize: 25,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white),
-                          )),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 150,
-                      ),
-                      Align(
-                        alignment: Alignment.bottomRight,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Text(
-                              "If you have an account?",
-                              style:
-                                  TextStyle(color: Colors.grey, fontSize: 15),
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.pop(context);
-                              },
-                              child: Text(
-                                "SIGN IN",
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 15),
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 80),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        TextField(
+                          controller: signupname,
+                          decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20),
                               ),
-                            )
-                          ],
+                              suffixIcon: const Icon(
+                                Icons.person_2_outlined,
+                                color: Colors.deepPurple,
+                              ),
+                              hintText: "Name"),
                         ),
-                      )
-                    ],
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        TextField(
+                          controller: signupemail,
+                          decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              suffixIcon: const Icon(
+                                Icons.email_outlined,
+                                color: Colors.deepPurple,
+                              ),
+                              hintText: "Email"),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        TextField(
+                          controller: signuppassword,
+                          obscureText: ishidden,
+                          decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              suffixIcon: GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      ishidden = !ishidden;
+                                    });
+                                  },
+                                  child: Icon(
+                                    ishidden
+                                        ? Icons.visibility
+                                        : Icons.visibility_off,
+                                    color: Colors.deepPurple,
+                                  )),
+                              hintText: "Password"),
+                        ),
+                        const SizedBox(
+                          height: 50,
+                        ),
+                        GestureDetector(
+                          onTap: () {},
+                          child: Container(
+                            height: 60,
+                            width: 250,
+                            decoration: BoxDecoration(
+                                gradient: const LinearGradient(
+                                    colors: [Colors.deepPurple, Colors.purple]),
+                                borderRadius: BorderRadius.circular(30)),
+                            child: const Center(
+                                child: Text(
+                              "Sign Up",
+                              style: TextStyle(
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
+                            )),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 100,
+                        ),
+                        Align(
+                          alignment: Alignment.bottomRight,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Text(
+                                "If you have an account?",
+                                style:
+                                    TextStyle(color: Colors.grey, fontSize: 15),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.pop(context);
+                                },
+                                child: Text(
+                                  "SIGN IN",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15),
+                                ),
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
