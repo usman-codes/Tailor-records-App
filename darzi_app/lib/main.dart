@@ -1,8 +1,11 @@
+import 'package:darzi_app/Controller/internetcontroller.dart';
 import 'package:darzi_app/screens/Splashscreen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(const MyApp());
+  Get.put(InternetController(), permanent: true);
 }
 
 class MyApp extends StatelessWidget {
@@ -11,7 +14,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'DARZI DIGITAL',
         theme: ThemeData(
