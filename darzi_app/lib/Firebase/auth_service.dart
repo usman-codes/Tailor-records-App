@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService {
   Future<String?> registration({
@@ -29,10 +30,16 @@ class AuthService {
     required String password,
   }) async {
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
+      UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
+
+      // Save user ID to SharedPreferences
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setString('userId', userCredential.user!.uid);
+
       return 'Success';
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
@@ -42,6 +49,18 @@ class AuthService {
       } else {
         return e.message;
       }
+    } catch (e) {
+      return e.toString();
+    }
+  }
+
+  Future<String?> logout() async {
+    try {
+      await FirebaseAuth.instance.signOut();
+      // Clear SharedPreferences
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.clear();
+      return 'Success';
     } catch (e) {
       return e.toString();
     }

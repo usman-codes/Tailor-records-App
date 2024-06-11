@@ -5,6 +5,7 @@ import 'package:darzi_app/screens/Signupscreen.dart';
 import 'package:darzi_app/screens/loginscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class splashscreen extends StatefulWidget {
   const splashscreen({super.key});
@@ -16,10 +17,21 @@ class splashscreen extends StatefulWidget {
 class _splashscreenState extends State<splashscreen> {
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 3), () {
+    Timer(Duration(seconds: 3), () async {
+      await _checkUserSession();
+    });
+  }
+
+  _checkUserSession() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? userId = prefs.getString('userId');
+    if (userId != null) {
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => HomeScreen()));
+    } else {
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => loginscreen()));
-    });
+    }
   }
 
   @override

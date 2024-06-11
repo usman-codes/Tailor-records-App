@@ -1,9 +1,11 @@
 import 'package:darzi_app/Firebase/auth_service.dart';
 import 'package:darzi_app/screens/Homescreen.dart';
 import 'package:darzi_app/screens/Signupscreen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class loginscreen extends StatefulWidget {
   const loginscreen({super.key});
@@ -15,6 +17,22 @@ class loginscreen extends StatefulWidget {
 class _loginscreenState extends State<loginscreen> {
   TextEditingController loginEmail = TextEditingController();
   TextEditingController loginpassword = TextEditingController();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  Future<void> _login() async {
+    try {
+      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+          email: loginEmail.text, password: loginpassword.text);
+      User? user = userCredential.user;
+      if (user != null) {
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        prefs.setString('userId', user.uid);
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => HomeScreen()));
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
 
   bool ishidden = true;
   @override
@@ -102,7 +120,7 @@ class _loginscreenState extends State<loginscreen> {
                         ),
                         GestureDetector(
                           onTap: () {},
-                          child: Align(
+                          child: const Align(
                             alignment: Alignment.centerRight,
                             child: Text(
                               "Forgot Password",
@@ -123,15 +141,17 @@ class _loginscreenState extends State<loginscreen> {
                             );
                             if (message!.contains('Success')) {
                               Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => HomeScreen()));
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => HomeScreen()),
+                              );
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(message),
+                                ),
+                              );
                             }
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(message),
-                              ),
-                            );
                           },
                           child: Container(
                             height: 60,
