@@ -1,5 +1,8 @@
+import 'package:darzi_app/Firebase/auth_service.dart';
+import 'package:darzi_app/screens/Homescreen.dart';
 import 'package:darzi_app/screens/loginscreen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 
 class signupscrenn extends StatefulWidget {
@@ -110,7 +113,22 @@ class _signupscrennState extends State<signupscrenn> {
                           height: 50,
                         ),
                         GestureDetector(
-                          onTap: () {},
+                          onTap: () async {
+                            final message = await AuthService().registration(
+                                email: signupemail.text,
+                                password: signuppassword.text);
+                            if (message!.contains('Success')) {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => HomeScreen()));
+                            }
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(message),
+                              ),
+                            );
+                          },
                           child: Container(
                             height: 60,
                             width: 250,
@@ -144,7 +162,10 @@ class _signupscrennState extends State<signupscrenn> {
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  Navigator.pop(context);
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => loginscreen()));
                                 },
                                 child: Text(
                                   "SIGN IN",

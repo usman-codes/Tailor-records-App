@@ -1,3 +1,4 @@
+import 'package:darzi_app/Firebase/auth_service.dart';
 import 'package:darzi_app/screens/Homescreen.dart';
 import 'package:darzi_app/screens/Signupscreen.dart';
 import 'package:flutter/cupertino.dart';
@@ -115,12 +116,22 @@ class _loginscreenState extends State<loginscreen> {
                           height: 50,
                         ),
                         GestureDetector(
-                          onTap: () {
-                            Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => HomeScreen(),
-                                ));
+                          onTap: () async {
+                            final message = await AuthService().login(
+                              email: loginEmail.text,
+                              password: loginpassword.text,
+                            );
+                            if (message!.contains('Success')) {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => HomeScreen()));
+                            }
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(message),
+                              ),
+                            );
                           },
                           child: Container(
                             height: 60,
@@ -155,7 +166,7 @@ class _loginscreenState extends State<loginscreen> {
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  Navigator.push(
+                                  Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
