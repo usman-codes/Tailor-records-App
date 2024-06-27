@@ -1,11 +1,9 @@
 import 'package:darzi_app/Controller/internetcontroller.dart';
-import 'package:darzi_app/screens/Homescreen.dart';
-import 'package:darzi_app/screens/Loginscreen.dart'; // Fix the import statement
+// Fix the import statement
 import 'package:darzi_app/screens/Splashscreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

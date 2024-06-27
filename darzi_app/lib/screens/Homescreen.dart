@@ -6,7 +6,6 @@ import 'package:darzi_app/screens/setting.dart';
 import 'package:darzi_app/widgets/custom%20widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
 
 class HomeScreen extends StatefulWidget {
   @override

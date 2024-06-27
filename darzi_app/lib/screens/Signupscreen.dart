@@ -1,6 +1,7 @@
 import 'package:darzi_app/Firebase/auth_service.dart';
 import 'package:darzi_app/screens/Homescreen.dart';
 import 'package:darzi_app/screens/loginscreen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
@@ -13,10 +14,10 @@ class signupscrenn extends StatefulWidget {
 }
 
 class _signupscrennState extends State<signupscrenn> {
-  bool ishidden = true;
   TextEditingController signupname = TextEditingController();
   TextEditingController signupemail = TextEditingController();
   TextEditingController signuppassword = TextEditingController();
+  ValueNotifier<bool> toggel = ValueNotifier(true);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,32 +89,34 @@ class _signupscrennState extends State<signupscrenn> {
                         const SizedBox(
                           height: 20,
                         ),
-                        TextField(
-                          controller: signuppassword,
-                          obscureText: ishidden,
-                          decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              suffixIcon: GestureDetector(
-                                  onTap: () {
-                                    setState(() {
-                                      ishidden = !ishidden;
-                                    });
-                                  },
-                                  child: Icon(
-                                    ishidden
-                                        ? Icons.visibility
-                                        : Icons.visibility_off,
-                                    color: Colors.deepPurple,
-                                  )),
-                              hintText: "Password"),
-                        ),
+                        ValueListenableBuilder(
+                            valueListenable: toggel,
+                            builder: (context, Value, child) {
+                              return TextField(
+                                controller: signuppassword,
+                                obscureText: toggel.value,
+                                decoration: InputDecoration(
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    suffixIcon: GestureDetector(
+                                        onTap: () {
+                                          toggel.value = !toggel.value;
+                                        },
+                                        child: Icon(
+                                          toggel.value
+                                              ? Icons.visibility_off
+                                              : Icons.visibility,
+                                          color: Colors.deepPurple,
+                                        )),
+                                    hintText: "Password"),
+                              );
+                            }),
                         const SizedBox(
                           height: 50,
                         ),
-                        GestureDetector(
-                          onTap: () async {
+                        CupertinoButton(
+                          onPressed: () async {
                             final message = await AuthService().registration(
                                 email: signupemail.text,
                                 password: signuppassword.text);
@@ -129,6 +132,7 @@ class _signupscrennState extends State<signupscrenn> {
                               ),
                             );
                           },
+                          padding: EdgeInsets.zero,
                           child: Container(
                             height: 60,
                             width: 250,

@@ -34,7 +34,7 @@ class _loginscreenState extends State<loginscreen> {
     }
   }
 
-  bool ishidden = true;
+  ValueNotifier<bool> toogle = ValueNotifier(true);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -93,28 +93,29 @@ class _loginscreenState extends State<loginscreen> {
                         const SizedBox(
                           height: 30,
                         ),
-                        TextField(
-                          controller: loginpassword,
-                          obscureText: ishidden,
-                          obscuringCharacter: "*",
-                          decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              suffixIcon: GestureDetector(
-                                  onTap: () {
-                                    setState(() {
-                                      ishidden = !ishidden;
-                                    });
-                                  },
-                                  child: Icon(
-                                    ishidden
-                                        ? Icons.visibility
-                                        : Icons.visibility_off,
-                                    color: Colors.deepPurple,
-                                  )),
-                              hintText: "Password"),
-                        ),
+                        ValueListenableBuilder(
+                            valueListenable: toogle,
+                            builder: (context, value, child) {
+                              return TextField(
+                                controller: loginpassword,
+                                obscureText: toogle.value,
+                                decoration: InputDecoration(
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    suffixIcon: GestureDetector(
+                                        onTap: () {
+                                          toogle.value = !toogle.value;
+                                        },
+                                        child: Icon(
+                                          toogle.value
+                                              ? Icons.visibility_off
+                                              : Icons.visibility,
+                                          color: Colors.deepPurple,
+                                        )),
+                                    hintText: "Password"),
+                              );
+                            }),
                         const SizedBox(
                           height: 20,
                         ),
@@ -133,8 +134,8 @@ class _loginscreenState extends State<loginscreen> {
                         const SizedBox(
                           height: 50,
                         ),
-                        GestureDetector(
-                          onTap: () async {
+                        CupertinoButton(
+                          onPressed: () async {
                             final message = await AuthService().login(
                               email: loginEmail.text,
                               password: loginpassword.text,
@@ -153,9 +154,10 @@ class _loginscreenState extends State<loginscreen> {
                               );
                             }
                           },
+                          padding: EdgeInsets.zero,
                           child: Container(
                             height: 60,
-                            width: 250,
+                            width: 300,
                             decoration: BoxDecoration(
                                 gradient: const LinearGradient(
                                     colors: [Colors.deepPurple, Colors.purple]),
