@@ -1,6 +1,7 @@
 import 'package:darzi_app/Firebase/auth_service.dart';
 import 'package:darzi_app/screens/Homescreen.dart';
 import 'package:darzi_app/screens/loginscreen.dart';
+import 'package:darzi_app/widgets/custom%20widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -125,12 +126,14 @@ class _signupscrennState extends State<signupscrenn> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => HomeScreen()));
+                            } else {
+                              showFlashMessage(context, message);
+                              // ScaffoldMessenger.of(context).showSnackBar(
+                              //   SnackBar(
+                              //     content: Text(message),
+                              //   ),
+                              // );
                             }
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(message),
-                              ),
-                            );
                           },
                           padding: EdgeInsets.zero,
                           child: Container(

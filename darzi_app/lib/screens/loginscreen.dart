@@ -164,7 +164,7 @@ class _loginscreenState extends State<loginscreen> {
                                 borderRadius: BorderRadius.circular(30)),
                             child: const Center(
                                 child: Text(
-                              "Sign in",
+                              "Log in",
                               style: TextStyle(
                                   fontSize: 25,
                                   fontWeight: FontWeight.bold,
@@ -172,7 +172,7 @@ class _loginscreenState extends State<loginscreen> {
                             )),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 100,
                         ),
                         Align(
@@ -181,7 +181,7 @@ class _loginscreenState extends State<loginscreen> {
                             mainAxisAlignment: MainAxisAlignment.end,
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
-                              Text(
+                              const Text(
                                 "Don't have an account?",
                                 style:
                                     TextStyle(color: Colors.grey, fontSize: 15),
@@ -192,9 +192,9 @@ class _loginscreenState extends State<loginscreen> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              signupscrenn()));
+                                              const signupscrenn()));
                                 },
-                                child: Text(
+                                child: const Text(
                                   "SIGN UP",
                                   style: TextStyle(
                                       color: Colors.black,

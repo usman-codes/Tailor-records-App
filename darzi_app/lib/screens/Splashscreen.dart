@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:darzi_app/screens/Homescreen.dart';
-import 'package:darzi_app/screens/Signupscreen.dart';
 import 'package:darzi_app/screens/loginscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';

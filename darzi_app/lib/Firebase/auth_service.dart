@@ -7,10 +7,15 @@ class AuthService {
     required String password,
   }) async {
     try {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      UserCredential userCredential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
+      // Save user ID to SharedPreferences
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setString('userId', userCredential.user!.uid);
+
       return 'Success';
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
