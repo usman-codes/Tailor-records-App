@@ -1,6 +1,7 @@
 import 'package:darzi_app/Firebase/auth_service.dart';
 import 'package:darzi_app/screens/Homescreen.dart';
 import 'package:darzi_app/screens/Signupscreen.dart';
+import 'package:darzi_app/widgets/custom%20widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -45,7 +46,7 @@ class _loginscreenState extends State<loginscreen> {
             width: double.infinity,
             decoration: const BoxDecoration(
               gradient: LinearGradient(
-                colors: [Colors.deepPurple, Colors.purple],
+                colors: [Appcolors.deeppurpleColor, Appcolors.purpleColor],
               ),
             ),
             child: const Padding(
@@ -65,8 +66,8 @@ class _loginscreenState extends State<loginscreen> {
               decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(50),
-                      topRight: Radius.circular(50))),
+                      topLeft: Radius.circular(40),
+                      topRight: Radius.circular(40))),
               height: double.infinity,
               width: double.infinity,
               child: Padding(
@@ -81,11 +82,11 @@ class _loginscreenState extends State<loginscreen> {
                           controller: loginEmail,
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20),
+                              borderRadius: BorderRadius.circular(10),
                             ),
-                            suffixIcon: const Icon(
+                            prefixIcon: const Icon(
                               Icons.email_outlined,
-                              color: Colors.deepPurple,
+                              color: Appcolors.deeppurpleColor,
                             ),
                             hintText: "Email",
                           ),
@@ -101,7 +102,11 @@ class _loginscreenState extends State<loginscreen> {
                                 obscureText: toogle.value,
                                 decoration: InputDecoration(
                                     border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(20),
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    prefixIcon: const Icon(
+                                      Icons.lock_outline_rounded,
+                                      color: Appcolors.deeppurpleColor,
                                     ),
                                     suffixIcon: GestureDetector(
                                         onTap: () {
@@ -111,7 +116,7 @@ class _loginscreenState extends State<loginscreen> {
                                           toogle.value
                                               ? Icons.visibility_off
                                               : Icons.visibility,
-                                          color: Colors.deepPurple,
+                                          color: Appcolors.deeppurpleColor,
                                         )),
                                     hintText: "Password"),
                               );
@@ -127,7 +132,7 @@ class _loginscreenState extends State<loginscreen> {
                               "Forgot Password",
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.deepPurple),
+                                  color: Appcolors.deeppurpleColor),
                             ),
                           ),
                         ),
@@ -147,11 +152,7 @@ class _loginscreenState extends State<loginscreen> {
                                     builder: (context) => HomeScreen()),
                               );
                             } else {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(message),
-                                ),
-                              );
+                              showFlashMessage(context, message);
                             }
                           },
                           padding: EdgeInsets.zero,
@@ -159,9 +160,11 @@ class _loginscreenState extends State<loginscreen> {
                             height: 60,
                             width: 300,
                             decoration: BoxDecoration(
-                                gradient: const LinearGradient(
-                                    colors: [Colors.deepPurple, Colors.purple]),
-                                borderRadius: BorderRadius.circular(30)),
+                                gradient: const LinearGradient(colors: [
+                                  Appcolors.deeppurpleColor,
+                                  Appcolors.purpleColor
+                                ]),
+                                borderRadius: BorderRadius.circular(15)),
                             child: const Center(
                                 child: Text(
                               "Log in",

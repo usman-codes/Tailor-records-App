@@ -1,3 +1,4 @@
+import 'package:darzi_app/provider/theme_provider.dart';
 import 'package:darzi_app/screens/Allcustomer.dart';
 import 'package:darzi_app/screens/Allorders.dart';
 import 'package:darzi_app/screens/newcustomer.dart';
@@ -6,6 +7,8 @@ import 'package:darzi_app/screens/setting.dart';
 import 'package:darzi_app/widgets/custom%20widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -31,9 +34,39 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home Screen'),
+        // centerTitle: true,
+        title: Text(
+          'Digital Darzi',
+          style: TextStyle(color: Colors.white),
+        ),
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Image.asset(
+            color: Colors.white,
+            "assets/Icon2.png",
+            fit: BoxFit.contain,
+            // width: 180,
+            // height: 250,
+          ),
+        ),
         automaticallyImplyLeading: false,
         backgroundColor: Appcolors.deeppurpleColor,
+        actions: [
+          PopupMenuButton<int>(
+            onSelected: (value) {
+              if (value == 1) {
+                Provider.of<ThemeProvider>(context, listen: false)
+                    .toggleTheme();
+              }
+            },
+            itemBuilder: (context) => [
+              PopupMenuItem(
+                value: 1,
+                child: Text('Toggle Theme'),
+              ),
+            ],
+          ),
+        ],
       ),
       body: currentindex == 0
           ? Padding(
@@ -99,7 +132,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
         currentIndex: currentindex,
-        selectedItemColor: Colors.deepPurple,
+        selectedItemColor: Appcolors.deeppurpleColor,
         unselectedItemColor: Colors.grey,
         onTap: onTabTapped,
         backgroundColor: Colors.white, // Change this to the desired color
@@ -112,14 +145,14 @@ Card makeDashboardItem(
     String title, IconData icon, Color color, VoidCallback onTap) {
   return Card(
       // elevation: 1.0,
-      margin: new EdgeInsets.all(8.0),
+      margin: EdgeInsets.all(8.0),
       child: Container(
         decoration: BoxDecoration(
           shape: BoxShape.rectangle,
           color: color.withOpacity(0.2),
           borderRadius: BorderRadius.circular(15.0),
         ),
-        child: new InkWell(
+        child: InkWell(
           onTap: onTap,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -134,9 +167,10 @@ Card makeDashboardItem(
                 color: color,
               )),
               SizedBox(height: 20.0),
-              new Center(
-                child: new Text(title,
-                    style: new TextStyle(fontSize: 18.0, color: Colors.black)),
+              Center(
+                child: Text(title,
+                    style:
+                        const TextStyle(fontSize: 18.0, color: Colors.black)),
               )
             ],
           ),

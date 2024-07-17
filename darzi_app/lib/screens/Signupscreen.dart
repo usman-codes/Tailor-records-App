@@ -28,8 +28,8 @@ class _signupscrennState extends State<signupscrenn> {
             height: double.infinity,
             width: double.infinity,
             decoration: const BoxDecoration(
-              gradient:
-                  LinearGradient(colors: [Colors.deepPurple, Colors.purple]),
+              gradient: LinearGradient(
+                  colors: [Appcolors.deeppurpleColor, Appcolors.purpleColor]),
             ),
             child: const Padding(
               padding: EdgeInsets.only(left: 25, top: 60),
@@ -48,8 +48,8 @@ class _signupscrennState extends State<signupscrenn> {
               decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(50),
-                      topRight: Radius.circular(50))),
+                      topLeft: Radius.circular(40),
+                      topRight: Radius.circular(40))),
               height: double.infinity,
               width: double.infinity,
               child: Padding(
@@ -64,11 +64,12 @@ class _signupscrennState extends State<signupscrenn> {
                           controller: signupname,
                           decoration: InputDecoration(
                               border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              suffixIcon: const Icon(
-                                Icons.person_2_outlined,
-                                color: Colors.deepPurple,
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide:
+                                      BorderSide(style: BorderStyle.solid)),
+                              prefixIcon: const Icon(
+                                Icons.person_outlined,
+                                color: Appcolors.deeppurpleColor,
                               ),
                               hintText: "Name"),
                         ),
@@ -79,11 +80,11 @@ class _signupscrennState extends State<signupscrenn> {
                           controller: signupemail,
                           decoration: InputDecoration(
                               border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20),
+                                borderRadius: BorderRadius.circular(10),
                               ),
-                              suffixIcon: const Icon(
+                              prefixIcon: const Icon(
                                 Icons.email_outlined,
-                                color: Colors.deepPurple,
+                                color: Appcolors.deeppurpleColor,
                               ),
                               hintText: "Email"),
                         ),
@@ -98,7 +99,11 @@ class _signupscrennState extends State<signupscrenn> {
                                 obscureText: toggel.value,
                                 decoration: InputDecoration(
                                     border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(20),
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    prefixIcon: const Icon(
+                                      Icons.lock_outline_rounded,
+                                      color: Appcolors.deeppurpleColor,
                                     ),
                                     suffixIcon: GestureDetector(
                                         onTap: () {
@@ -108,7 +113,7 @@ class _signupscrennState extends State<signupscrenn> {
                                           toggel.value
                                               ? Icons.visibility_off
                                               : Icons.visibility,
-                                          color: Colors.deepPurple,
+                                          color: Appcolors.deeppurpleColor,
                                         )),
                                     hintText: "Password"),
                               );
@@ -128,21 +133,18 @@ class _signupscrennState extends State<signupscrenn> {
                                       builder: (context) => HomeScreen()));
                             } else {
                               showFlashMessage(context, message);
-                              // ScaffoldMessenger.of(context).showSnackBar(
-                              //   SnackBar(
-                              //     content: Text(message),
-                              //   ),
-                              // );
                             }
                           },
                           padding: EdgeInsets.zero,
                           child: Container(
                             height: 60,
-                            width: 250,
+                            width: 300,
                             decoration: BoxDecoration(
-                                gradient: const LinearGradient(
-                                    colors: [Colors.deepPurple, Colors.purple]),
-                                borderRadius: BorderRadius.circular(30)),
+                                gradient: const LinearGradient(colors: [
+                                  Appcolors.deeppurpleColor,
+                                  Appcolors.purpleColor
+                                ]),
+                                borderRadius: BorderRadius.circular(15)),
                             child: const Center(
                                 child: Text(
                               "Sign Up",

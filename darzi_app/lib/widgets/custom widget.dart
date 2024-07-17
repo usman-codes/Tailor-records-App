@@ -3,11 +3,10 @@ import 'package:another_flushbar/flushbar_route.dart';
 import 'package:flutter/material.dart';
 
 class Appcolors {
-  Appcolors._();
   static const Color blueColor = Colors.blue;
   static const Color redColor = Colors.red;
-  static const Color purpleColor = Colors.purple;
-  static const Color deeppurpleColor = Colors.deepPurple;
+  static const Color purpleColor = Colors.black;
+  static const Color deeppurpleColor = Colors.black;
 }
 
 void showFlashMessage(BuildContext context, String message) {
@@ -23,8 +22,9 @@ void showFlashMessage(BuildContext context, String message) {
         padding: EdgeInsets.all(10),
         messageColor: Colors.black,
         reverseAnimationCurve: Curves.easeInOut,
+        borderRadius: BorderRadius.circular(20),
         positionOffset: 20,
-        icon: Icon(
+        icon: const Icon(
           Icons.error,
           size: 28,
           color: Colors.white,

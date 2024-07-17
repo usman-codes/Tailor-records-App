@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:darzi_app/screens/Homescreen.dart';
 import 'package:darzi_app/screens/loginscreen.dart';
+import 'package:darzi_app/widgets/custom%20widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -39,12 +40,12 @@ class _splashscreenState extends State<splashscreen> {
         body: Container(
       height: double.infinity,
       width: double.infinity,
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-            colors: [Colors.deepPurple, Colors.purple],
-            begin: Alignment.bottomRight,
-            end: Alignment.centerLeft),
-      ),
+      decoration: const BoxDecoration(color: Colors.black
+          // gradient: LinearGradient(
+          //     colors: [Appcolors.deeppurpleColor, Appcolors.purpleColor],
+          //     begin: Alignment.bottomRight,
+          //     end: Alignment.centerLeft),
+          ),
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -54,6 +55,7 @@ class _splashscreenState extends State<splashscreen> {
                 FadeEffect(delay: 300.ms),
               ],
               child: Image.asset(
+                color: Colors.white,
                 "assets/Icon2.png",
                 width: 180,
                 height: 250,
@@ -73,7 +75,10 @@ class _splashscreenState extends State<splashscreen> {
                 SizedBox(width: 10),
                 Text(
                   "DIGITAL",
-                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
                 )
               ],
             ).animate(delay: 400.ms).slideY(curve: Curves.easeIn)
