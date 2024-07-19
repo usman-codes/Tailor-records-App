@@ -27,10 +27,7 @@ class _signupscrennState extends State<signupscrenn> {
           Container(
             height: double.infinity,
             width: double.infinity,
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                  colors: [Appcolors.black, Appcolors.purpleColor]),
-            ),
+            decoration: const BoxDecoration(color: Appcolors.black),
             child: const Padding(
               padding: EdgeInsets.only(left: 25, top: 60),
               child: Text(
@@ -63,6 +60,7 @@ class _signupscrennState extends State<signupscrenn> {
                         TextField(
                           controller: signupname,
                           decoration: InputDecoration(
+                              focusColor: Colors.black,
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                   borderSide:
@@ -78,7 +76,9 @@ class _signupscrennState extends State<signupscrenn> {
                         ),
                         TextField(
                           controller: signupemail,
+                          keyboardType: TextInputType.emailAddress,
                           decoration: InputDecoration(
+                              focusColor: Colors.black,
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
@@ -98,6 +98,7 @@ class _signupscrennState extends State<signupscrenn> {
                                 controller: signuppassword,
                                 obscureText: toggel.value,
                                 decoration: InputDecoration(
+                                    focusColor: Colors.black,
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10),
                                     ),

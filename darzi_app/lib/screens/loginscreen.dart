@@ -44,11 +44,7 @@ class _loginscreenState extends State<loginscreen> {
           Container(
             height: double.infinity,
             width: double.infinity,
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [Appcolors.black, Appcolors.purpleColor],
-              ),
-            ),
+            decoration: const BoxDecoration(color: Appcolors.black),
             child: const Padding(
               padding: EdgeInsets.only(left: 25, top: 60),
               child: Text(
@@ -80,6 +76,7 @@ class _loginscreenState extends State<loginscreen> {
                       children: [
                         TextField(
                           controller: loginEmail,
+                          keyboardType: TextInputType.emailAddress,
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),

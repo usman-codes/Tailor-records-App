@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class Appcolors {
   static const Color blueColor = Colors.blue;
   static const Color redColor = Colors.red;
-  static const Color purpleColor = Colors.black;
+  static const Color purpleColor = Colors.green;
   static const Color black = Colors.black;
 }
 

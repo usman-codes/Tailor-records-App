@@ -19,8 +19,22 @@ class SettingsScreen extends StatelessWidget {
               leading: const Icon(Icons.dark_mode),
               title: const Text("Dark theme"),
               trailing: Switch(
+                  activeColor: Colors.white,
+                  inactiveThumbColor: Colors.black,
                   value: notifier.isDark,
                   onChanged: (value) => notifier.changeTheme()),
+            ),
+            InkWell(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => profile()));
+              },
+              child: Container(
+                  height: 200,
+                  width: 100,
+                  child: Hero(
+                      tag: "profile",
+                      child: Image.asset("assets/profile.jpg"))),
             )
           ],
         );
@@ -49,5 +63,23 @@ class SettingsScreen extends StatelessWidget {
       //   ),
       // );
     }
+  }
+}
+
+class profile extends StatelessWidget {
+  const profile({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      body: Center(
+        child: Container(
+          height: 400,
+          width: 400,
+          child: Hero(tag: "profile", child: Image.asset("assets/profile.jpg")),
+        ),
+      ),
+    );
   }
 }

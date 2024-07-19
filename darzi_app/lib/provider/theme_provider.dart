@@ -14,7 +14,7 @@ class UiProvider extends ChangeNotifier {
     brightness: Brightness.dark,
     primaryColorDark: Colors.black12,
     appBarTheme: const AppBarTheme(backgroundColor: Appcolors.black),
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       backgroundColor: Colors.white,
       selectedItemColor: Appcolors.black,
       unselectedItemColor: Colors.white,
