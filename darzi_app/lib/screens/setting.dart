@@ -1,6 +1,9 @@
 import 'package:darzi_app/Firebase/auth_service.dart';
+import 'package:darzi_app/provider/theme_provider.dart';
 import 'package:darzi_app/screens/loginscreen.dart';
+import 'package:darzi_app/widgets/custom%20widget.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SettingsScreen extends StatelessWidget {
   final AuthService _authService = AuthService();
@@ -8,14 +11,25 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text('Settings Screen'),
-      ),
+      body:
+          Consumer<UiProvider>(builder: (context, UiProvider notifier, child) {
+        return Column(
+          children: [
+            ListTile(
+              leading: const Icon(Icons.dark_mode),
+              title: const Text("Dark theme"),
+              trailing: Switch(
+                  value: notifier.isDark,
+                  onChanged: (value) => notifier.changeTheme()),
+            )
+          ],
+        );
+      }),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           _logout(context);
         },
-        child: Icon(Icons.logout),
+        child: const Icon(Icons.logout),
       ),
     );
   }
@@ -28,11 +42,12 @@ class SettingsScreen extends StatelessWidget {
         MaterialPageRoute(builder: (context) => loginscreen()),
       ); // Navigate to login screen
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text("Error"),
-        ),
-      );
+      showFlashMessage(context, "Error");
+      // ScaffoldMessenger.of(context).showSnackBar(
+      //   const SnackBar(
+      //     content: Text("Error"),
+      //   ),
+      // );
     }
   }
 }

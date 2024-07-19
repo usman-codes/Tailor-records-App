@@ -46,6 +46,7 @@ dependencies:
   cloud_firestore: ^5.0.1
   another_flushbar: ^1.12.30
   provider: ^6.1.2
+  adaptive_theme: ^3.4.1
 
 dev_dependencies:
   flutter_test:

@@ -6,7 +6,7 @@ class Appcolors {
   static const Color blueColor = Colors.blue;
   static const Color redColor = Colors.red;
   static const Color purpleColor = Colors.black;
-  static const Color deeppurpleColor = Colors.black;
+  static const Color black = Colors.black;
 }
 
 void showFlashMessage(BuildContext context, String message) {

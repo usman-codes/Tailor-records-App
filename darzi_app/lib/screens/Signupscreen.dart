@@ -29,7 +29,7 @@ class _signupscrennState extends State<signupscrenn> {
             width: double.infinity,
             decoration: const BoxDecoration(
               gradient: LinearGradient(
-                  colors: [Appcolors.deeppurpleColor, Appcolors.purpleColor]),
+                  colors: [Appcolors.black, Appcolors.purpleColor]),
             ),
             child: const Padding(
               padding: EdgeInsets.only(left: 25, top: 60),
@@ -69,7 +69,7 @@ class _signupscrennState extends State<signupscrenn> {
                                       BorderSide(style: BorderStyle.solid)),
                               prefixIcon: const Icon(
                                 Icons.person_outlined,
-                                color: Appcolors.deeppurpleColor,
+                                color: Appcolors.black,
                               ),
                               hintText: "Name"),
                         ),
@@ -84,7 +84,7 @@ class _signupscrennState extends State<signupscrenn> {
                               ),
                               prefixIcon: const Icon(
                                 Icons.email_outlined,
-                                color: Appcolors.deeppurpleColor,
+                                color: Appcolors.black,
                               ),
                               hintText: "Email"),
                         ),
@@ -103,7 +103,7 @@ class _signupscrennState extends State<signupscrenn> {
                                     ),
                                     prefixIcon: const Icon(
                                       Icons.lock_outline_rounded,
-                                      color: Appcolors.deeppurpleColor,
+                                      color: Appcolors.black,
                                     ),
                                     suffixIcon: GestureDetector(
                                         onTap: () {
@@ -113,7 +113,7 @@ class _signupscrennState extends State<signupscrenn> {
                                           toggel.value
                                               ? Icons.visibility_off
                                               : Icons.visibility,
-                                          color: Appcolors.deeppurpleColor,
+                                          color: Appcolors.black,
                                         )),
                                     hintText: "Password"),
                               );
@@ -141,7 +141,7 @@ class _signupscrennState extends State<signupscrenn> {
                             width: 300,
                             decoration: BoxDecoration(
                                 gradient: const LinearGradient(colors: [
-                                  Appcolors.deeppurpleColor,
+                                  Appcolors.black,
                                   Appcolors.purpleColor
                                 ]),
                                 borderRadius: BorderRadius.circular(15)),

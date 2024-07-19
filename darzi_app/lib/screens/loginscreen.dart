@@ -46,7 +46,7 @@ class _loginscreenState extends State<loginscreen> {
             width: double.infinity,
             decoration: const BoxDecoration(
               gradient: LinearGradient(
-                colors: [Appcolors.deeppurpleColor, Appcolors.purpleColor],
+                colors: [Appcolors.black, Appcolors.purpleColor],
               ),
             ),
             child: const Padding(
@@ -86,7 +86,7 @@ class _loginscreenState extends State<loginscreen> {
                             ),
                             prefixIcon: const Icon(
                               Icons.email_outlined,
-                              color: Appcolors.deeppurpleColor,
+                              color: Appcolors.black,
                             ),
                             hintText: "Email",
                           ),
@@ -106,7 +106,7 @@ class _loginscreenState extends State<loginscreen> {
                                     ),
                                     prefixIcon: const Icon(
                                       Icons.lock_outline_rounded,
-                                      color: Appcolors.deeppurpleColor,
+                                      color: Appcolors.black,
                                     ),
                                     suffixIcon: GestureDetector(
                                         onTap: () {
@@ -116,7 +116,7 @@ class _loginscreenState extends State<loginscreen> {
                                           toogle.value
                                               ? Icons.visibility_off
                                               : Icons.visibility,
-                                          color: Appcolors.deeppurpleColor,
+                                          color: Appcolors.black,
                                         )),
                                     hintText: "Password"),
                               );
@@ -132,7 +132,7 @@ class _loginscreenState extends State<loginscreen> {
                               "Forgot Password",
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  color: Appcolors.deeppurpleColor),
+                                  color: Appcolors.black),
                             ),
                           ),
                         ),
@@ -161,7 +161,7 @@ class _loginscreenState extends State<loginscreen> {
                             width: 300,
                             decoration: BoxDecoration(
                                 gradient: const LinearGradient(colors: [
-                                  Appcolors.deeppurpleColor,
+                                  Appcolors.black,
                                   Appcolors.purpleColor
                                 ]),
                                 borderRadius: BorderRadius.circular(15)),

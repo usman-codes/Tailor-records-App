@@ -1,4 +1,4 @@
-import 'package:darzi_app/provider/theme_provider.dart';
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:darzi_app/screens/Allcustomer.dart';
 import 'package:darzi_app/screens/Allorders.dart';
 import 'package:darzi_app/screens/newcustomer.dart';
@@ -7,8 +7,9 @@ import 'package:darzi_app/screens/setting.dart';
 import 'package:darzi_app/widgets/custom%20widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
 import 'package:provider/provider.dart';
+
+import '../provider/theme_provider.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -50,23 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         automaticallyImplyLeading: false,
-        backgroundColor: Appcolors.deeppurpleColor,
-        actions: [
-          PopupMenuButton<int>(
-            onSelected: (value) {
-              if (value == 1) {
-                Provider.of<ThemeProvider>(context, listen: false)
-                    .toggleTheme();
-              }
-            },
-            itemBuilder: (context) => [
-              PopupMenuItem(
-                value: 1,
-                child: Text('Toggle Theme'),
-              ),
-            ],
-          ),
-        ],
+        backgroundColor: Appcolors.black,
       ),
       body: currentindex == 0
           ? Padding(
@@ -86,8 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               builder: (context) => NewCustomerScreen()));
                     }),
                     makeDashboardItem(
-                        "New Order", Icons.add_box, Appcolors.deeppurpleColor,
-                        () {
+                        "New Order", Icons.add_box, Appcolors.black, () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -132,7 +116,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
         currentIndex: currentindex,
-        selectedItemColor: Appcolors.deeppurpleColor,
+        selectedItemColor: Appcolors.black,
         unselectedItemColor: Colors.grey,
         onTap: onTabTapped,
         backgroundColor: Colors.white, // Change this to the desired color

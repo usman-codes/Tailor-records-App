@@ -2,7 +2,6 @@ import 'package:darzi_app/Controller/internetcontroller.dart';
 import 'package:darzi_app/provider/theme_provider.dart';
 // Fix the import statement
 import 'package:darzi_app/screens/Splashscreen.dart';
-import 'package:darzi_app/widgets/custom%20widget.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,46 +16,37 @@ void main() async {
           appId: "1:995464969159:android:e9c12f4efa81036c77b7e2",
           messagingSenderId: "995464969159",
           projectId: "digital-darzi-3c619"));
-  runApp(ChangeNotifierProvider(
-    create: (_) => ThemeProvider(),
-    child: MyApp(),
-  )); // Use MyApp as the main widget
+  runApp(const MyApp());
   Get.put(InternetController(), permanent: true);
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<ThemeProvider>(
-      builder: (context, themeProvider, child) {
+    return ChangeNotifierProvider(
+      create: (BuildContext context) => UiProvider()..init(),
+      child:
+          Consumer<UiProvider>(builder: (context, UiProvider notifier, child) {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'DARZI DIGITAL',
-          themeMode: themeProvider.themeMode,
+          themeMode: notifier.isDark ? ThemeMode.dark : ThemeMode.light,
+
+          //Our custom theme applied
+          darkTheme: notifier.isDark ? notifier.darkTheme : notifier.lightTheme,
+
           theme: ThemeData(
-              brightness: Brightness.light,
-              primarySwatch: Colors.amber,
-              useMaterial3: true,
-              appBarTheme: AppBarTheme(color: Colors.black),
-              iconTheme: IconThemeData(color: Colors.white),
-              bottomNavigationBarTheme: BottomNavigationBarThemeData(
-                  backgroundColor: Colors.black,
-                  selectedItemColor: Colors.black)),
-          darkTheme: ThemeData(
-              useMaterial3: true,
-              brightness: Brightness.dark,
-              primarySwatch: Colors.blue,
-              appBarTheme: AppBarTheme(color: Colors.red),
-              iconTheme: IconThemeData(color: Colors.red),
-              bottomNavigationBarTheme: BottomNavigationBarThemeData(
-                  backgroundColor: Colors.white,
-                  selectedItemColor: Colors.white)),
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
+            useMaterial3: true,
+          ),
 
           home: const splashscreen(), // Set SplashScreen as the initial screen
         );
-      },
+      }),
     );
   }
 }
