@@ -33,8 +33,7 @@ class SettingsScreen extends StatelessWidget {
                   height: 200,
                   width: 100,
                   child: Hero(
-                      tag: "profile",
-                      child: Image.asset("assets/profile.jpg"))),
+                      tag: "profile", child: Image.asset("assets/Icon2.png"))),
             )
           ],
         );
