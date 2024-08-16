@@ -1,6 +1,3 @@
-import 'dart:math';
-
-import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:darzi_app/screens/Allcustomer.dart';
 import 'package:darzi_app/screens/Allorders.dart';
 import 'package:darzi_app/screens/newcustomer.dart';
@@ -9,9 +6,7 @@ import 'package:darzi_app/screens/setting.dart';
 import 'package:darzi_app/widgets/custom%20widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
 
-import '../provider/theme_provider.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
